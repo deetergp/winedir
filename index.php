@@ -1,4 +1,6 @@
 <?php
+define('CLASSES', __DIR__ . '/Classes/');
+define('TEMPLATES', __DIR__ . '/Templates/');
 
 $page = $_GET['page'] ?? 'main';
 
