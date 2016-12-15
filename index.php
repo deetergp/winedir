@@ -14,9 +14,9 @@ foreach ($routes as $key => $components) {
         $view = $components['view'];
         $controller = $components['controller'];
 
-        require __DIR__ . '/Class/' . $model . '.php';
-        require __DIR__ . '/Class/' . $view . '.php';
-        require __DIR__ . '/Class/' . $controller . '.php';
+        require __DIR__ . '/Classes/Model/' . $model . '.php';
+        require __DIR__ . '/Classes/View/' . $view . '.php';
+        require __DIR__ . '/Classes/Controller/' . $controller . '.php';
 
         $m = new $model();
         $v = new $view($m);
