@@ -5,7 +5,6 @@ define('TEMPLATES', __DIR__ . '/Templates/');
 $page = $_GET['page'] ?? 'main';
 
 $routes = [
-    'main' => array('model' => 'Model', 'view' => 'View', 'controller' => 'Controller'),
     'wines' => array('model' => 'WinesModel', 'view' => 'WinesView', 'controller' => 'WinesController'),
 ];
 
@@ -26,5 +25,5 @@ if (array_key_exists($page, $routes)) {
     print $v->output();
 }
 else {
-    print '<p>This is fine.</p>';
+    require_once TEMPLATES . 'index.html';
 }
