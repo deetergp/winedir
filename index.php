@@ -9,21 +9,22 @@ $routes = [
     'wines' => array('model' => 'WinesModel', 'view' => 'WinesView', 'controller' => 'WinesController'),
 ];
 
-foreach ($routes as $key => $components) {
-    if ($page == $key) {
+if (array_key_exists($page, $routes)) {
+    $classes = $routes[$page];
+    $model = $classes['model'];
+    $view = $classes['view'];
+    $controller = $classes['controller'];
 
-        $model = $components['model'];
-        $view = $components['view'];
-        $controller = $components['controller'];
+    require CLASSES . 'Model/' . $model . '.php';
+    require CLASSES . 'View/' . $view . '.php';
+    require CLASSES . 'Controller/' . $controller . '.php';
 
-        require __DIR__ . '/Classes/Model/' . $model . '.php';
-        require __DIR__ . '/Classes/View/' . $view . '.php';
-        require __DIR__ . '/Classes/Controller/' . $controller . '.php';
+    $m = new $model();
+    $v = new $view($m);
+    $c = new $controller($m);
 
-        $m = new $model();
-        $v = new $view($m);
-        $c = new $controller($m);
-
-        print $v->output();
-    }
+    print $v->output();
+}
+else {
+    print '<p>This is fine.</p>';
 }
